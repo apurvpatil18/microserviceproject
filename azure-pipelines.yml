@@ -4,17 +4,8 @@
 # https://aka.ms/yaml
 
 trigger:
-   branches:
-     include:
       - master
 
-
-stages:
-
-#Build Stage
-- stage: BuildAndTest
-jobs:
-- job: BuildAndTest
 pool:
   vmImage: ubuntu-latest
 
@@ -32,17 +23,3 @@ steps:
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     buildContext: '**/*.jar'
-    
-    - task: DotNetCoreCLI@2
-      inputs:
-        command: 'build'
-        - task: Maven@4
-          inputs:
-            mavenPomFile: 'pom.xml'
-            publishJUnitResults: true
-            testResultsFiles: '**/surefire-reports/TEST-*.xml'
-            javaHomeOption: 'JDKVersion'
-            mavenVersionOption: 'Default'
-            mavenAuthenticateFeed: false
-            effectivePomSkip: false
-            sonarQubeRunAnalysis: false
