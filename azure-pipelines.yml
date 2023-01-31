@@ -4,8 +4,20 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+   branches:
+     include:
+      - master
+variables:
+  buildConfiguration:'Release'
+  location: 'West US 2'
+  acrHostName: 'cswebappdocker004'
 
+stages:
+
+#Build Stage
+- stage: BuildAndTest
+jobs:
+- job: BuildAndTest
 pool:
   vmImage: ubuntu-latest
 
