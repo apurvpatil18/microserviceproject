@@ -7,10 +7,7 @@ trigger:
    branches:
      include:
       - master
-variables:
-  buildConfiguration:'Release'
-  location: 'West US 2'
-  acrHostName: 'cswebappdocker004'
+
 
 stages:
 
