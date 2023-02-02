@@ -18,7 +18,8 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-   task: Docker@2
-    inputs:
-      command: 'buildAndPush'
-      Dockerfile: '**/Dockerfile'
+- task: Docker@2
+  inputs:
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    buildContext: '**/*.jar'
